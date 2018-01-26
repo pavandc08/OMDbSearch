@@ -14,9 +14,10 @@ public abstract class MovieRepository {
     public interface OnFinishedListener {
         void onSearchFinished(SearchResults items);
 
+        void onLoadMorePage(SearchResults results, int page);
+
         void onDefaultError();
 
-        void onMovieDetail(MovieDetail movieDetail);
     }
 
 
@@ -24,7 +25,7 @@ public abstract class MovieRepository {
      * Search for a movie by its title. Will try to get the first result page.
      *
      * @param title the title to search for.
-     * @return a search result as an instance of {@link SearchResults}.
+     * @param listener listener to know when the network call is done.
      */
         public  abstract  void search(@NonNull String title, OnFinishedListener listener);
 
@@ -32,7 +33,8 @@ public abstract class MovieRepository {
      * Get the specified page result of a search for the received title.
      *
      * @param title the title to search for.
-     * @return a search result as an instance of {@link SearchResults}.
+     * @param page  the page number  of search results
+     * @param listener listener to know when the network call is done.
      */
         public abstract  void search(@NonNull String title, @NonNull int page, OnFinishedListener listener);
 

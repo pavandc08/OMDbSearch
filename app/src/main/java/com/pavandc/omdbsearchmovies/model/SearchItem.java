@@ -107,8 +107,4 @@ public class SearchItem implements Parcelable {
 
     }
 
-
-
-
-
 }
