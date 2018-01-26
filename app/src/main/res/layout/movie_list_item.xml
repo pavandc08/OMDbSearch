@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <ImageView
@@ -13,7 +13,7 @@
         android:layout_marginBottom="@dimen/padding_medium"
         android:layout_marginStart="@dimen/padding_large"
         android:layout_marginTop="@dimen/padding_medium"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"

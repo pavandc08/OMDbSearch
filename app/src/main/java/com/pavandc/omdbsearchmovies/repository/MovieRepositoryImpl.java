@@ -30,7 +30,7 @@ public class MovieRepositoryImpl extends  MovieRepository {
 
     @Override
     public void search(@NonNull String title, final OnFinishedListener listener) {
-        Call<SearchResults> call = omdbService.searchMovie(apiKey, title, "movie", 1);
+        Call<SearchResults> call = omdbService.searchMovie(apiKey, title, 1);
         call.enqueue(new Callback<SearchResults>() {
             @Override
             public void onResponse(Call<SearchResults> call, Response<SearchResults> response) {
@@ -48,7 +48,7 @@ public class MovieRepositoryImpl extends  MovieRepository {
     @Override
     public void search(@NonNull String title, @NonNull int page, final OnFinishedListener listener) {
 
-        Call<SearchResults> call = omdbService.searchMovie(apiKey, title, "movie", page);
+        Call<SearchResults> call = omdbService.searchMovie(apiKey, title, page);
 
         call.enqueue(new Callback<SearchResults>() {
             @Override
