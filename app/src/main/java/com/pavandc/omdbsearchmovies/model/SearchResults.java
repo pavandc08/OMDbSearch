@@ -20,6 +20,6 @@ public class SearchResults {
     }
 
     public List<SearchItem> getMovies() {
-        return  movies;
+        return movies;
     }
 }

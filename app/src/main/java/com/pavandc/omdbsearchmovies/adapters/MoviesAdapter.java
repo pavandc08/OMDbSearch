@@ -3,7 +3,6 @@ package com.pavandc.omdbsearchmovies.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ import java.util.List;
  * Created by pavandc on 2018-01-25.
  */
 
-public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
+public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
     public interface MovieItemListener {
         void onMovieClicked(SearchItem movieClicked);
@@ -32,7 +31,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     private List<SearchItem> mMovies;
 
 
-    public MovieListAdapter(Context context, MovieItemListener listener) {
+    public MoviesAdapter(Context context, MovieItemListener listener) {
         mContext = context;
         mListener = listener;
     }
@@ -78,7 +77,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
 
 
     protected class MovieViewHolder extends RecyclerView.ViewHolder implements LoadImageTask.ImageInterface {
-        public TextView title;
+        TextView title;
         TextView year;
         TextView director;
         ImageView poster;
@@ -95,7 +94,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
             LoadImageTask loadImageTask = new LoadImageTask();
             loadImageTask.addListener(this);
             loadImageTask.execute(imageUrl);
-
         }
 
         @Override

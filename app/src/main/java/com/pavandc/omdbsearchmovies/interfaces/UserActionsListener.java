@@ -18,6 +18,4 @@ public interface UserActionsListener {
     void openMovieDetails(@NonNull SearchItem movie);
 
     State getState();
-
-    void clear();
 }

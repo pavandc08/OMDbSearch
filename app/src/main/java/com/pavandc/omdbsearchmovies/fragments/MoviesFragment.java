@@ -2,6 +2,7 @@ package com.pavandc.omdbsearchmovies.fragments;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -27,7 +28,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pavandc.omdbsearchmovies.R;
-import com.pavandc.omdbsearchmovies.adapters.MovieListAdapter;
+import com.pavandc.omdbsearchmovies.activities.DetailsActivity;
+import com.pavandc.omdbsearchmovies.adapters.MoviesAdapter;
 import com.pavandc.omdbsearchmovies.model.SearchItem;
 import com.pavandc.omdbsearchmovies.presenters.MainPresenter;
 import com.pavandc.omdbsearchmovies.repository.MovieRepositoryImpl;
@@ -60,13 +62,14 @@ public class MoviesFragment extends Fragment implements MainView {
     private TextView mTextViewEmptyScreen;
 
     private RecyclerView mRecyclerView;
-    private MovieListAdapter mAdapter;
+    private MoviesAdapter mAdapter;
     private UserActionsListener mUserActionListener;
     private String mQueryString;
     private SearchView mSearchView;
 
 
-    public MoviesFragment() {}
+    public MoviesFragment() {
+    }
 
     public static MoviesFragment newInstance() {
         return new MoviesFragment();
@@ -80,7 +83,7 @@ public class MoviesFragment extends Fragment implements MainView {
         Toolbar toolbar = rootView.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-        mAdapter = new MovieListAdapter(getContext(), movie -> mUserActionListener.openMovieDetails(movie));
+        mAdapter = new MoviesAdapter(getContext(), movie -> mUserActionListener.openMovieDetails(movie));
 
         mRecyclerView = rootView.findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -94,12 +97,6 @@ public class MoviesFragment extends Fragment implements MainView {
         mTextViewEmptyScreen = rootView.findViewById(R.id.tv_empty_screen);
         return rootView;
 
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mUserActionListener.clear();
     }
 
     @Override
@@ -238,6 +235,9 @@ public class MoviesFragment extends Fragment implements MainView {
 
     @Override
     public void showMovieDetailsUi(@NonNull String imdbId) {
+        Intent intent = new Intent(getContext(), DetailsActivity.class);
+        intent.putExtra(DetailsActivity.EXTRA_IMDB_ID, imdbId);
+        startActivity(intent);
 
     }
 

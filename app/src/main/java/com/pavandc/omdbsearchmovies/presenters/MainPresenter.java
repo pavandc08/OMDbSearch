@@ -1,16 +1,14 @@
 package com.pavandc.omdbsearchmovies.presenters;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.pavandc.omdbsearchmovies.R;
-import com.pavandc.omdbsearchmovies.model.MovieDetail;
-import com.pavandc.omdbsearchmovies.model.SearchItem;
-import com.pavandc.omdbsearchmovies.model.SearchResults;
-import com.pavandc.omdbsearchmovies.repository.MovieRepository;
 import com.pavandc.omdbsearchmovies.interfaces.MainView;
 import com.pavandc.omdbsearchmovies.interfaces.State;
 import com.pavandc.omdbsearchmovies.interfaces.UserActionsListener;
+import com.pavandc.omdbsearchmovies.model.SearchItem;
+import com.pavandc.omdbsearchmovies.model.SearchResults;
+import com.pavandc.omdbsearchmovies.repository.MovieRepository;
 
 /**
  * Created by pavandc on 2018-01-24.
@@ -27,9 +25,9 @@ public class MainPresenter implements MovieRepository.OnFinishedListener, UserAc
     private int mResultsPerPage;
 
     public MainPresenter(MovieRepository repository, MainView mainView, State state) {
-        this.movieRepository =  repository;
+        this.movieRepository = repository;
         this.mainView = mainView;
-        if(state != null) {
+        if (state != null) {
             mLastSearch = state.getLastSearchTerm();
             mFetched = state.getTotalFetched();
             mTotal = state.getTotal();
@@ -53,9 +51,9 @@ public class MainPresenter implements MovieRepository.OnFinishedListener, UserAc
 
     @Override
     public void onSearchFinished(SearchResults searchResults) {
-        if(mainView != null) {
+        if (mainView != null) {
             mainView.hideProgress();
-            if(searchResults.getMovies() != null && !searchResults.getMovies().isEmpty()
+            if (searchResults.getMovies() != null && !searchResults.getMovies().isEmpty()
                     && searchResults.getTotalResults() > 0) {
                 mainView.showSearchResults(searchResults.getMovies());
                 mTotal = searchResults.getTotalResults();
@@ -71,7 +69,7 @@ public class MainPresenter implements MovieRepository.OnFinishedListener, UserAc
 
     @Override
     public void onLoadMorePage(SearchResults searchResults, int pageNumber) {
-        if(mainView != null && !searchResults.getMovies().isEmpty()) {
+        if (mainView != null && !searchResults.getMovies().isEmpty()) {
             mainView.showMoreResults(searchResults.getMovies());
             mFetched += searchResults.getMovies().size();
         }
@@ -117,11 +115,6 @@ public class MainPresenter implements MovieRepository.OnFinishedListener, UserAc
     }
 
     @Override
-    public void clear() {
-
-    }
-
-    @Override
     public void onDefaultError() {
         handleError(R.string.error);
     }
@@ -132,7 +125,7 @@ public class MainPresenter implements MovieRepository.OnFinishedListener, UserAc
         mainView.showMovieDetailsUi(movie.getImdbID());
     }
 
-    private  void handleError(int id) {
+    private void handleError(int id) {
         if (mainView != null) {
             mainView.hideProgress();
             mainView.showError(id);

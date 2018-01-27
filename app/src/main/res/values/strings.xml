@@ -9,4 +9,11 @@
     <string name="no_result">No results found</string>
     <string name="error">An error occurred. Please try again.</string>
 
+    <string name="details_rating_description">Movie Rating: %1$s</string>
+    <string name="details_director_subtitle">Director</string>
+    <string name="details_actors_subtitle">Actors</string>
+    <string name="details_awards_subtitle">Awards</string>
+    <string name="details_plot_subtitle">Plot</string>
+    <string name="movie_poster">Movie Poster</string>
+
 </resources>

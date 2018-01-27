@@ -6,11 +6,11 @@ package com.pavandc.omdbsearchmovies.interfaces;
 
 public interface State {
 
-        String getLastSearchTerm();
+    String getLastSearchTerm();
 
-        int getTotal();
+    int getTotal();
 
-        int getTotalFetched();
+    int getTotalFetched();
 
-        int getResultsPerPage();
+    int getResultsPerPage();
 }

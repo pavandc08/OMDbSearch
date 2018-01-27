@@ -64,18 +64,18 @@ public class MovieRepositoryImpl extends  MovieRepository {
     }
 
     @Override
-    public void getMovieDetails(@NonNull final String imdbId, final OnFinishedListener listener) {
+    public void getMovieDetails(@NonNull final String imdbId, final onShowDetails listener) {
        Call<MovieDetail> callback =  omdbService.getMovieDetails(apiKey, imdbId);
 
        callback.enqueue(new Callback<MovieDetail>() {
            @Override
            public void onResponse(Call<MovieDetail> call, Response<MovieDetail> response) {
-                //listener.onMovieDetail(response.body());
+                listener.onMovieDetail(response.body());
            }
 
            @Override
            public void onFailure(Call<MovieDetail> call, Throwable t) {
-                listener.onDefaultError();
+                listener.onError(t.getMessage());
            }
        });
     }
