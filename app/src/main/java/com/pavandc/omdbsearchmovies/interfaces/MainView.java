@@ -12,9 +12,9 @@ import java.util.List;
 
 public interface MainView {
 
-    void showProgress();
+    void showLoading();
 
-    void hideProgress();
+    void hideLoading();
 
     void showSearchResults(@NonNull List<SearchItem> searchResults);
 

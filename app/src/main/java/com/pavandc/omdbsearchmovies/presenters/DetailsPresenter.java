@@ -2,18 +2,19 @@ package com.pavandc.omdbsearchmovies.presenters;
 
 import com.pavandc.omdbsearchmovies.interfaces.DetailsView;
 import com.pavandc.omdbsearchmovies.model.MovieDetail;
-import com.pavandc.omdbsearchmovies.repository.MovieRepository;
+import com.pavandc.omdbsearchmovies.repository.MovieRepositoryImpl;
+import com.pavandc.omdbsearchmovies.services.MovieDetailsTask;
 
 /**
  * Created by pavandc on 2018-01-27.
  */
 
-public class DetailsPresenter implements MovieRepository.onShowDetails {
+public class DetailsPresenter implements  MovieDetailsTask.onShowDetails {
 
-    private MovieRepository movieRepository;
+    private MovieRepositoryImpl movieRepository;
     private DetailsView detailsView;
 
-    public DetailsPresenter(MovieRepository movieRepository, DetailsView view) {
+    public DetailsPresenter(MovieRepositoryImpl movieRepository, DetailsView view) {
          this.movieRepository = movieRepository;
          this.detailsView = view;
     }

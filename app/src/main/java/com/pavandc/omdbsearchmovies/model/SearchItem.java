@@ -63,6 +63,14 @@ public class SearchItem implements Parcelable {
         poster = in.readString();
     }
 
+    public SearchItem(String title, String year, String imdbId, String type, String poster) {
+        this.title = title;
+        this.year = year;
+        this.imdbID = imdbId;
+        this.type = type;
+        this.poster = poster;
+    }
+
     @Override
     public int describeContents() {
         return 0;

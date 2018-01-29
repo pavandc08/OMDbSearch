@@ -126,7 +126,7 @@ public class MoviesFragment extends Fragment implements MainView {
         }
 
         // creates the presenter with the saved state
-        mUserActionListener = new MainPresenter(new MovieRepositoryImpl(this.getContext()), this,
+        mUserActionListener = new MainPresenter(new MovieRepositoryImpl(), this,
                 readStateFromBundle(savedInstanceState));
     }
 
@@ -193,13 +193,13 @@ public class MoviesFragment extends Fragment implements MainView {
     }
 
     @Override
-    public void showProgress() {
+    public void showLoading() {
         hideEmptyStateElements();
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void hideProgress() {
+    public void hideLoading() {
         mProgressBar.setVisibility(View.GONE);
     }
 

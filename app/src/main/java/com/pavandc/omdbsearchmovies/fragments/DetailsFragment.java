@@ -70,7 +70,7 @@ public class DetailsFragment extends Fragment implements DetailsView, LoadImageT
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        presenter = new DetailsPresenter(new MovieRepositoryImpl(getContext()), this);
+        presenter = new DetailsPresenter(new MovieRepositoryImpl(), this);
     }
 
     @Override
